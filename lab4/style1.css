@@ -1,0 +1,26 @@
+.red {
+    color: red;
+}
+.underline {
+    text-decoration: underline;
+}
+.bold {
+    font-weight: bold;
+}
+.highlight{
+    color: blue;
+    background-color: yellow;
+}
+p: :first-of-type {
+ color: green;
+}
+p[title="test"] {
+    color: orange;
+}
+p[mycustomattribute="test"]{
+    color: orange;
+}
+p:hover{
+    color: red;
+    text-decoration: underline;
+}
