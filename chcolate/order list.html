@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Facts</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: flex-start;
+        }
+        .container img {
+            margin-left: 20px;
+            max-width: 250px; /* Tăng kích thước tối đa của ảnh */
+            height: auto;
+        }
+        .facts {
+            border: 2px dotted red; /* Khung viền chấm đỏ */
+            background-color: #FFFACD; /* Nền màu vàng nhạt */
+            padding: 10px;
+        }
+        ol {
+            padding: 0;
+            counter-reset: item;
+        }
+        li {
+            margin-bottom: 10px;
+            list-style-type: none;
+            counter-increment: item;
+        }
+        li::before {
+            content: counter(item) ". ";
+            font-weight: bold;
+        }
+        .highlight {
+            background-color: yellow; /* Nền màu vàng cho điểm nổi bật */
+        }
+    </style>
+</head>
+<body>
+    <h1>Things you didn't know about chocolate!</h1>
+    <div class="container">
+        <div class="facts">
+            <ol>
+                <li>It arrived to Europe in the 16th century</li>
+                <li>The first years, only drinking chocolate was available</li>
+                <li>It was considered luxury food!</li>
+                <li>It contains caffeine</li>
+                <li class="highlight">Your brain needs it after hard work!</li>
+            </ol>
+        </div>
+        <img src="images/milk_chcolate.png" alt="Strawberries dipped in chocolate">
+    </div>
+</body>
+</html>
