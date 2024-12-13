@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="registrationForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter your username" required>
+        <span class="error-message" id="usernameError">Username must be at least 3 characters long</span>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <span class="error-message" id="emailError">Please enter a valid email address</span>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <span class="error-message" id="passwordError">Password must be at least 8 characters long and contain at least one number and one special character</span>
+        <br>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+        <span class="error-message" id="confirmPasswordError">Passwords do not match</span>
+        <br>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" placeholder="XXX-XXX-XXXX" pattern="\d{3}-\d{3}-\d{4}" required>
+        <span class="error-message" id="phoneError">Please enter a valid phone number (e.g., XXX-XXX-XXXX)</span>
+        <br>
+        <button type="submit">Register</button>
+        <span class="success-message" id="successMessage">Registration successful!</span>
+    </form>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            validateForm();
+        });
+
+        function validateForm() {
+            let isValid = true;
+
+            const username = document.getElementById('username');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const phone = document.getElementById('phone');
+
+            if (username.value.length < 3) {
+                isValid = false;
+                username.classList.add('invalid');
+                document.getElementById('usernameError').style.display = 'block';
+            } else {
+                username.classList.remove('invalid');
+                document.getElementById('usernameError').style.display = 'none';
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value)) {
+                isValid = false;
+                email.classList.add('invalid');
+                document.getElementById('emailError').style.display = 'block';
+            } else {
+                email.classList.remove('invalid');
+                document.getElementById('emailError').style.display = 'none';
+            }
+
+            const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])/;
+            if (password.value.length < 8 || !passwordPattern.test(password.value)) {
+                isValid = false;
+                password.classList.add('invalid');
+                document.getElementById('passwordError').style.display = 'block';
+            } else {
+                password.classList.remove('invalid');
+                document.getElementById('passwordError').style.display = 'none';
+            }
+
+            if (confirmPassword.value !== password.value) {
+                isValid = false;
+                confirmPassword.classList.add('invalid');
+                document.getElementById('confirmPasswordError').style.display = 'block';
+            } else {
+                confirmPassword.classList.remove('invalid');
+                document.getElementById('confirmPasswordError').style.display = 'none';
+            }
+
+            if (!phone.value.match(/^\d{3}-\d{3}-\d{4}$/)) {
+                isValid = false;
+                phone.classList.add('invalid');
+                document.getElementById('phoneError').style.display = 'block';
+            } else {
+                phone.classList.remove('invalid');
+                document.getElementById('phoneError').style.display = 'none';
+            }
+
+            if (isValid) {
+                document.getElementById('successMessage').style.display = 'block';
+            }
+        }
+
+        document.getElementById('username').addEventListener('input', function() {
+            const errorMessage = document.getElementById('usernameError');
+            if (this.value.length < 3) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+
+        document.getElementById('email').addEventListener('input', function() {
+            const errorMessage = document.getElementById('emailError');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(this.value)) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            const errorMessage = document.getElementById('passwordError');
+            const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])/;
+            if (this.value.length < 8 || !passwordPattern.test(this.value)) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const errorMessage = document.getElementById('confirmPasswordError');
+            const password = document.getElementById('password').value;
+            if (this.value !== password) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+
+        document.getElementById('phone').addEventListener('input', function() {
+            const errorMessage = document.getElementById('phoneError');
+            if (!this.value.match(/^\d{3}-\d{3}-\d{4}$/)) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
