@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <form id="registrationForm">
@@ -101,8 +101,10 @@
         document.getElementById('username').addEventListener('input', function() {
             const errorMessage = document.getElementById('usernameError');
             if (this.value.length < 3) {
+                this.classList.add('invalid');
                 errorMessage.style.display = 'block';
             } else {
+                this.classList.remove('invalid');
                 errorMessage.style.display = 'none';
             }
         });
@@ -111,8 +113,10 @@
             const errorMessage = document.getElementById('emailError');
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(this.value)) {
+                this.classList.add('invalid');
                 errorMessage.style.display = 'block';
             } else {
+                this.classList.remove('invalid');
                 errorMessage.style.display = 'none';
             }
         });
@@ -121,8 +125,10 @@
             const errorMessage = document.getElementById('passwordError');
             const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])/;
             if (this.value.length < 8 || !passwordPattern.test(this.value)) {
+                this.classList.add('invalid');
                 errorMessage.style.display = 'block';
             } else {
+                this.classList.remove('invalid');
                 errorMessage.style.display = 'none';
             }
         });
@@ -131,8 +137,10 @@
             const errorMessage = document.getElementById('confirmPasswordError');
             const password = document.getElementById('password').value;
             if (this.value !== password) {
+                this.classList.add('invalid');
                 errorMessage.style.display = 'block';
             } else {
+                this.classList.remove('invalid');
                 errorMessage.style.display = 'none';
             }
         });
@@ -140,8 +148,10 @@
         document.getElementById('phone').addEventListener('input', function() {
             const errorMessage = document.getElementById('phoneError');
             if (!this.value.match(/^\d{3}-\d{3}-\d{4}$/)) {
+                this.classList.add('invalid');
                 errorMessage.style.display = 'block';
             } else {
+                this.classList.remove('invalid');
                 errorMessage.style.display = 'none';
             }
         });
