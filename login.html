@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleanify Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #dff6f5, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-card {
+      width: 480px;
+      padding: 40px;
+      border: 1px solid #E6E9EE;
+      box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.06);
+      border-radius: 24px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .login-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .login-logo {
+      width: 50px;
+      height: 50px;
+      background-color: #0EA5A4;
+      border-radius: 12px;
+    }
+
+    .login-title {
+      color: #0F1724;
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 16px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-group label {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .input-group input {
+      padding: 12px;
+      border: 1px solid #E6E9EE;
+      border-radius: 12px;
+      background-color: #FBFDFF;
+      font-size: 14px;
+      color: #0F1724;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .input-group input:focus {
+      border-color: #0EA5A4;
+      box-shadow: 0px 0px 6px rgba(14, 165, 164, 0.3);
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #0F1724;
+    }
+
+    .forgot {
+      color: #0EA5A4;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #0EA5A4;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .login-btn:hover {
+      background-color: #0b8c8a;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #E6E9EE;
+      margin-top: 8px;
+      border: none;
+    }
+
+    .login-footer {
+      font-size: 12px;
+      color: #94A3B8;
+      text-align: center;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-card {
+      animation: fadeIn 0.6s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Form đăng nhập -->
+  <div class="login-card" id="loginSection">
+    <div class="login-header">
+      <div class="login-logo"></div>
+      <h2 class="login-title">Welcome to Cleanify</h2>
+    </div>
+
+    <form class="login-form" id="loginForm">
+      <div class="input-group">
+        <label>Email or Username</label>
+        <input type="text" id="username" placeholder="name@example.com" required />
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="••••••••" required />
+      </div>
+
+      <div class="form-options">
+        <label class="remember">
+          <input type="checkbox" /> Remember me
+        </label>
+        <a href="#" class="forgot">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="login-btn">Login</button>
+      <p class="error" id="errorMsg"></p>
+    </form>
+
+    <hr class="divider" />
+
+    <p class="login-footer">
+      Secure login — your credentials are encrypted and protected 🔒
+    </p>
+  </div>
+
+  <script>
+    // Dữ liệu người dùng mẫu
+    const users = [
+      { username: "admin@example.com", password: "123456", role: "admin" },
+      { username: "staff@example.com", password: "123456", role: "staff" },
+      { username: "customer@example.com", password: "123456", role: "customer" },
+    ];
+
+    const form = document.getElementById("loginForm");
+    const errorMsg = document.getElementById("errorMsg");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      const foundUser = users.find(
+        (u) => u.username === username && u.password === password
+      );
+
+      if (foundUser) {
+        // ✅ Điều hướng theo vai trò
+        switch (foundUser.role) {
+          case "admin":
+            window.location.href = "admin.html";
+            break;
+          case "staff":
+            window.location.href = "staff.html";
+            break;
+          case "customer":
+            window.location.href = "customer.html";
+            break;
+        }
+      } else {
+        errorMsg.textContent = "❌ Sai tên đăng nhập hoặc mật khẩu.";
+      }
+    });
+  </script>
+</body>
+</html>

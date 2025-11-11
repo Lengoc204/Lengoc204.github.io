@@ -1,0 +1,316 @@
+/* ================================
+   🌿 GLOBAL STYLE
+================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #0F1720;
+  background-color: #FFFFFF;
+  overflow-x: hidden;
+}
+
+/* ================================
+   🧭 NAVBAR
+================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 50px;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: #0EA5A4;
+  color: #fff;
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0EA5A4;
+}
+
+.navbar nav a {
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+  color: #0EA5A4;
+}
+
+.btn-login, .btn-signup {
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background: #f2f2f2;
+}
+
+.btn-signup {
+  background: #0EA5A4;
+  color: #fff;
+}
+
+.btn-signup:hover {
+  background: #0c8c8b;
+}
+
+/* ================================
+   🏡 HERO SECTION
+================================== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 160px 80px 80px;
+  background: linear-gradient(135deg, #EAFDFC 0%, #FFFFFF 100%);
+  flex-wrap: wrap;
+}
+
+.hero-left {
+  flex: 1;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.hero-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-6px);
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rating-box {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(255,255,255,0.9);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.emojis {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.stats {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #0EA5A4;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.hero-right {
+  flex: 1;
+  padding-left: 50px;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.hero-right h1 {
+  font-size: 72px;
+  font-weight: 700;
+  color: #0EA5A4;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero-right p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.btn-primary {
+  background: #0EA5A4;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #0c8c8b;
+  transform: translateY(-2px);
+}
+
+/* ================================
+   ✉️ CONTACT SECTION
+================================== */
+.contact-section {
+  padding: 80px 80px;
+  background: #F8FBFB;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-form, .support-info {
+  flex: 1;
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+  color: #0EA5A4;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.btn-send {
+  background: #0EA5A4;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-send:hover {
+  background: #0c8c8b;
+}
+
+.support-info h3 {
+  color: #0EA5A4;
+  margin-bottom: 15px;
+}
+
+.support-info p {
+  margin-bottom: 10px;
+}
+
+.chatbot-btn {
+  display: inline-block;
+  border: 1px solid #0EA5A4;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #0EA5A4;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.socials a {
+  text-decoration: none;
+  color: #0EA5A4;
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.map-box img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* ================================
+   ⚙️ FOOTER
+================================== */
+footer {
+  background: #0EA5A4;
+  color: white;
+  text-align: center;
+  padding: 25px 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-buttons button {
+  margin: 5px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-feedback {
+  background: white;
+  color: #0EA5A4;
+}
+
+.btn-feedback:hover {
+  background: #f2f2f2;
+}
+
+/* ================================
+   ✨ ANIMATIONS
+================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
